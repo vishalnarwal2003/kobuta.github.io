@@ -33,7 +33,7 @@
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
 // Replace 91XXXXXXXXXX with the company's WhatsApp number including country code, digits only.
-const WHATSAPP_NUMBER='91XXXXXXXXXX';
+const WHATSAPP_NUMBER='919588563212';
 document.getElementById('enquiry').addEventListener('submit',function(e){e.preventDefault();const d=new FormData(e.target);const msg=`Website Enquiry - Kobuta Enviro Experts\nName: ${d.get('name')}\nCompany: ${d.get('company')||'Not provided'}\nRequirement: ${d.get('plant')}\nCapacity: ${d.get('capacity')||'Not provided'}\nDetails: ${d.get('application')||'Not provided'}`;if(WHATSAPP_NUMBER==='91XXXXXXXXXX'){alert('Please add the official WhatsApp number in the website code before using the enquiry form. Your message is ready:\n\n'+msg);return;}window.open('https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(msg),'_blank','noopener');});
 </script>
 </body></html>
