@@ -131,6 +131,15 @@ body:has(#kobutaGate:not([hidden])) .section.soft .vision-grid{filter:blur(5px);
  #kobutaGate .kgate-status{font-size:11.7px!important}
 }
 
+/* Violet submit button for a polished contrast */
+#kobutaGate .kgate-submit{background:linear-gradient(135deg,#7c3aed 0%,#5b21b6 100%)!important;color:#fff!important;border:1px solid #5b21b6!important}
+#kobutaGate .kgate-submit:hover{background:linear-gradient(135deg,#6d28d9 0%,#4c1d95 100%)!important}
+
+/* Fit the visitor popup tightly to its content: no blank space below the submit button */
+#kobutaGate .kgate-card{height:auto!important;max-height:calc(100dvh - 24px)!important;overflow-y:auto!important;overflow-x:hidden!important;padding-bottom:18px!important}
+#kobutaGate .kgate-grid{row-gap:5px!important}
+#kobutaGate .kgate-status:empty{display:none!important}
+@media(max-width:520px){#kobutaGate .kgate-card{height:auto!important;max-height:calc(100dvh - 20px)!important;padding:9px!important;padding-bottom:9px!important;overflow-y:auto!important}}
 </style>
 
 <!-- Social sharing preview image -->
