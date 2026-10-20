@@ -184,16 +184,28 @@ document.getElementById('enquiry').addEventListener('submit',function(e){e.preve
  const status=document.getElementById('kgateStatus');
  const submit=document.getElementById('kgateSubmit');
  let waiting=false;
+ let responseHandled=false;
+ function unlockWebsite(){
+   responseHandled=true; waiting=false; gate.hidden=true; document.body.classList.remove('kgate-locked');
+   try{sessionStorage.setItem('kobutaEnquirySubmitted','yes')}catch(e){}
+ }
  form.addEventListener('submit',function(){
-   waiting=true; submit.disabled=true; submit.textContent='Submitting…';
+   waiting=true; responseHandled=false; submit.disabled=true; submit.textContent='Submitting…';
    status.textContent='Submitting your enquiry. Please wait…';
+ });
+ // Apps Script may redirect its iframe response, so use iframe load as a fallback
+ // if its postMessage response is blocked by the browser's cross-origin sandbox.
+ document.getElementById('kgateFrame').addEventListener('load',function(){
+   if(waiting && !responseHandled){
+     status.textContent='Response received. Opening website…';
+     setTimeout(function(){if(waiting && !responseHandled) unlockWebsite();},500);
+   }
  });
  window.addEventListener('message',function(event){
    if(event.data==='KOBUTA_ENQUIRY_SAVED'){
-     waiting=false; gate.hidden=true; document.body.classList.remove('kgate-locked');
-     try{sessionStorage.setItem('kobutaEnquirySubmitted','yes')}catch(e){}
+     unlockWebsite();
    }else if(event.data==='KOBUTA_ENQUIRY_FAILED'){
-     waiting=false; submit.disabled=false; submit.textContent='Submit Form & Access Website ↗';
+     responseHandled=true; waiting=false; submit.disabled=false; submit.textContent='Submit Form & Access Website ↗';
      status.textContent='Submission failed. Please check details and try again.';
    }
  });
