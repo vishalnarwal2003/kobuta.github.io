@@ -62,11 +62,11 @@ tbody tr:nth-child(even){background:#f0f8fd}
 /* Mandatory enquiry popup */
 #kobutaGate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:12px;background:rgba(5,35,61,.10);backdrop-filter:none;pointer-events:none;touch-action:pan-y}
 #kobutaGate[hidden]{display:none!important}
-.kgate-card{pointer-events:auto;width:min(620px,96vw);max-height:70vh;overflow:auto;background:rgba(255,255,255,.98);border:1px solid #c9e4f2;border-radius:20px;padding:22px;box-shadow:0 24px 80px rgba(4,43,82,.30)}
+.kgate-card{pointer-events:auto;width:min(620px,96vw);height:60vh;max-height:60vh;overflow:visible;background:linear-gradient(145deg,#70b77c 0%,#4f9b60 52%,#347d47 100%);border:1px solid #286d3a;border-radius:20px;padding:22px;box-shadow:0 24px 80px rgba(4,43,82,.30)}
 .kgate-head{text-align:center;margin-bottom:12px}.kgate-head h2{font-size:clamp(23px,4vw,31px);margin:0 0 4px;color:#07509a}.kgate-head p{font-size:13px;margin:0;color:#526c83}
 .kgate-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.kgate-field{display:flex;flex-direction:column;gap:5px}.kgate-field.full{grid-column:1/-1}.kgate-field label{font-size:12px;font-weight:800;color:#153b63}.kgate-field input,.kgate-field select{width:100%;padding:11px;border:1px solid #c8dce8;border-radius:9px;font:inherit;font-size:14px;background:#fff;color:#153b63}.kgate-consent{display:flex;gap:12px;align-items:flex-start;font-size:12px;color:#526c83;line-height:1.5}.kgate-field .kgate-consent input{width:24px;height:24px;min-width:24px;flex:0 0 24px;margin:1px 0 0;accent-color:#0875c9;cursor:pointer}.kgate-submit{width:100%;margin-top:5px}.kgate-status{font-size:12px;text-align:center;color:#07509a;margin:8px 0 0}.kgate-status:empty{display:none}
 body.kgate-locked{overflow-y:auto}
-@media(max-width:520px){.kgate-card{padding:17px;max-height:70dvh;border-radius:16px}.kgate-grid{grid-template-columns:1fr;gap:9px}.kgate-field.full{grid-column:auto}.kgate-field input,.kgate-field select{padding:10px}}
+@media(max-width:520px){.kgate-card{height:60dvh;max-height:60dvh;padding:12px;border-radius:16px}.kgate-head{margin-bottom:7px}.kgate-head h2{font-size:22px}.kgate-head p{font-size:12px}.kgate-grid{grid-template-columns:1fr 1fr;gap:7px}.kgate-field.full{grid-column:1/-1}.kgate-field label{font-size:11px}.kgate-field input,.kgate-field select{padding:7px;font-size:12px}.kgate-consent{font-size:10px;gap:8px}.kgate-field .kgate-consent input{width:22px;height:22px;min-width:22px;flex-basis:22px}.kgate-submit{padding:9px 10px;font-size:12px}.kgate-status{font-size:10px;margin:4px 0 0}}
 
 </style>
 
