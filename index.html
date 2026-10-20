@@ -58,6 +58,16 @@ tbody tr:nth-child(even){background:#f0f8fd}
  .soft:after{height:5px}
 }
 
+
+/* Mandatory enquiry popup */
+#kobutaGate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:12px;background:rgba(5,35,61,.10);backdrop-filter:none;pointer-events:none;touch-action:pan-y}
+#kobutaGate[hidden]{display:none!important}
+.kgate-card{pointer-events:auto;width:min(620px,96vw);max-height:70vh;overflow:auto;background:rgba(255,255,255,.98);border:1px solid #c9e4f2;border-radius:20px;padding:22px;box-shadow:0 24px 80px rgba(4,43,82,.30)}
+.kgate-head{text-align:center;margin-bottom:12px}.kgate-head h2{font-size:clamp(23px,4vw,31px);margin:0 0 4px;color:#07509a}.kgate-head p{font-size:13px;margin:0;color:#526c83}
+.kgate-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.kgate-field{display:flex;flex-direction:column;gap:5px}.kgate-field.full{grid-column:1/-1}.kgate-field label{font-size:12px;font-weight:800;color:#153b63}.kgate-field input,.kgate-field select{width:100%;padding:11px;border:1px solid #c8dce8;border-radius:9px;font:inherit;font-size:14px;background:#fff;color:#153b63}.kgate-consent{display:flex;gap:12px;align-items:flex-start;font-size:12px;color:#526c83;line-height:1.5}.kgate-field .kgate-consent input{width:24px;height:24px;min-width:24px;flex:0 0 24px;margin:1px 0 0;accent-color:#0875c9;cursor:pointer}.kgate-submit{width:100%;margin-top:5px}.kgate-status{font-size:12px;text-align:center;color:#07509a;margin:8px 0 0}.kgate-status:empty{display:none}
+body.kgate-locked{overflow-y:auto}
+@media(max-width:520px){.kgate-card{padding:17px;max-height:70dvh;border-radius:16px}.kgate-grid{grid-template-columns:1fr;gap:9px}.kgate-field.full{grid-column:auto}.kgate-field input,.kgate-field select{padding:10px}}
+
 </style>
 
 <!-- Social sharing preview image -->
@@ -73,7 +83,28 @@ tbody tr:nth-child(even){background:#f0f8fd}
 <meta name="twitter:image" content="https://vishalnarwal2003.github.io/kobuta.github.io/kobuta-social-preview.jpg">
 
 </head>
-<body>
+<body class="kgate-locked">
+
+<div id="kobutaGate" role="dialog" aria-modal="true" aria-labelledby="kgateTitle">
+  <div class="kgate-card">
+    <div class="kgate-head">
+      <div class="kicker">Kobuta Enviro Experts</div>
+      <h2 id="kgateTitle">Visitors Form</h2>
+      <p style="color:#e00000;font-weight:800;">फॉर्म भरें</p>
+    </div>
+    <form id="kgateForm" class="kgate-grid" method="POST" target="kgateFrame" action="https://script.google.com/macros/s/AKfycbwRpFVOLr321AiL0sCvF9j0PO8cfmZvhtwqOblgIS553FFeMwJWD1bFfDPmG3hlz35LWQ/exec">
+      <div class="kgate-field"><label for="kgName">Full Name *</label><input id="kgName" name="name" required maxlength="100" autocomplete="name" placeholder="Enter your name"></div>
+      <div class="kgate-field"><label for="kgMobile">Mobile Number *</label><input id="kgMobile" name="mobile" type="tel" inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" required autocomplete="tel-national" placeholder="10-digit mobile number"></div>
+      <div class="kgate-field"><label for="kgCompany">Company / Organisation</label><input id="kgCompany" name="company" maxlength="120" autocomplete="organization" placeholder="Company name (optional)"></div>
+      <div class="kgate-field"><label for="kgCity">City *</label><input id="kgCity" name="city" required maxlength="100" autocomplete="address-level2" placeholder="Enter city"></div>
+      <div class="kgate-field full"><label for="kgRequirement">Requirement *</label><select id="kgRequirement" name="requirement" required><option value="">Select requirement</option><option>STP Plant</option><option>ETP Plant</option><option>RO / Water Treatment</option><option>AMC / Service</option><option>Other</option></select></div>
+      <div class="kgate-field full"><label class="kgate-consent"><input type="checkbox" name="consent" value="yes" required><span>I agree that Kobuta Enviro Experts may use the details I provide to respond to my enquiry.</span></label></div>
+      <div class="kgate-field full"><button id="kgateSubmit" class="btn kgate-submit" type="submit">Submit Form & Access Website ↗</button><p id="kgateStatus" class="kgate-status" aria-live="polite"></p></div>
+    </form>
+  </div>
+</div>
+<iframe title="Enquiry submission" name="kgateFrame" id="kgateFrame" style="position:absolute;width:1px;height:1px;left:-9999px;border:0" aria-hidden="true"></iframe>
+
 <div class="topline"><div class="wrap"><span>Packaged Sewage Treatment Plants (STP)</span><span>Clean Water | Greener Tomorrow</span></div></div>
 <header class="header"><div class="wrap nav">
 <a class="brand" href="#home"><img class="brand-logo" src="kobuta-header-logo.png" alt="Kobuta Enviro Experts — Clean Water, Greener Tomorrow"></a>
@@ -145,6 +176,31 @@ menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}));
 const WHATSAPP_NUMBER='919588563212';
 document.getElementById('enquiry').addEventListener('submit',function(e){e.preventDefault();const d=new FormData(e.target);const msg=`STP Enquiry - Kobuta Enviro Experts\nName: ${d.get('name')}\nCompany: ${d.get('company')||'Not provided'}\nRequired Capacity: ${d.get('capacity')}\nInstallation Preference: ${d.get('installation')||'Not decided'}\nApplication / Location: ${d.get('application')}`;window.open('https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(msg),'_blank','noopener');});
+
+// Mandatory enquiry gate. Unlock only after the Apps Script confirms saving.
+(function(){
+ const gate=document.getElementById('kobutaGate');
+ const form=document.getElementById('kgateForm');
+ const status=document.getElementById('kgateStatus');
+ const submit=document.getElementById('kgateSubmit');
+ let waiting=false;
+ form.addEventListener('submit',function(){
+   waiting=true; submit.disabled=true; submit.textContent='Submitting…';
+   status.textContent='Submitting your enquiry. Please wait…';
+ });
+ window.addEventListener('message',function(event){
+   if(event.data==='KOBUTA_ENQUIRY_SAVED'){
+     waiting=false; gate.hidden=true; document.body.classList.remove('kgate-locked');
+     try{sessionStorage.setItem('kobutaEnquirySubmitted','yes')}catch(e){}
+   }else if(event.data==='KOBUTA_ENQUIRY_FAILED'){
+     waiting=false; submit.disabled=false; submit.textContent='Submit Form & Access Website ↗';
+     status.textContent='Submission failed. Please check details and try again.';
+   }
+ });
+ // Keep gate visible on fresh visits; only remember successful submission for this tab session.
+ try{if(sessionStorage.getItem('kobutaEnquirySubmitted')==='yes'){gate.hidden=true;document.body.classList.remove('kgate-locked')}}catch(e){}
+})();
+
 </script>
 </body>
 </html>
