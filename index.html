@@ -62,11 +62,49 @@ tbody tr:nth-child(even){background:#f0f8fd}
 /* Mandatory enquiry popup */
 #kobutaGate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:12px;background:rgba(5,35,61,.10);backdrop-filter:none;pointer-events:none;touch-action:pan-y}
 #kobutaGate[hidden]{display:none!important}
-.kgate-card{pointer-events:auto;width:min(620px,96vw);height:60vh;max-height:60vh;overflow:visible;background:linear-gradient(145deg,#70b77c 0%,#4f9b60 52%,#347d47 100%);border:1px solid #286d3a;border-radius:20px;padding:22px;box-shadow:0 24px 80px rgba(4,43,82,.30)}
-.kgate-head{text-align:center;margin-bottom:12px}.kgate-head h2{font-size:clamp(23px,4vw,31px);margin:0 0 4px;color:#07509a}.kgate-head p{font-size:13px;margin:0;color:#526c83}
-.kgate-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.kgate-field{display:flex;flex-direction:column;gap:5px}.kgate-field.full{grid-column:1/-1}.kgate-field label{font-size:12px;font-weight:800;color:#153b63}.kgate-field input,.kgate-field select{width:100%;padding:11px;border:1px solid #c8dce8;border-radius:9px;font:inherit;font-size:14px;background:#fff;color:#153b63}.kgate-consent{display:flex;gap:12px;align-items:flex-start;font-size:12px;color:#526c83;line-height:1.5}.kgate-field .kgate-consent input{width:24px;height:24px;min-width:24px;flex:0 0 24px;margin:1px 0 0;accent-color:#0875c9;cursor:pointer}.kgate-submit{width:100%;margin-top:5px}.kgate-status{font-size:12px;text-align:center;color:#07509a;margin:8px 0 0}.kgate-status:empty{display:none}
-body.kgate-locked{overflow-y:auto}
-@media(max-width:520px){.kgate-card{height:60dvh;max-height:60dvh;padding:12px;border-radius:16px}.kgate-head{margin-bottom:7px}.kgate-head h2{font-size:22px}.kgate-head p{font-size:12px}.kgate-grid{grid-template-columns:1fr 1fr;gap:7px}.kgate-field.full{grid-column:1/-1}.kgate-field label{font-size:11px}.kgate-field input,.kgate-field select{padding:7px;font-size:12px}.kgate-consent{font-size:10px;gap:8px}.kgate-field .kgate-consent input{width:22px;height:22px;min-width:22px;flex-basis:22px}.kgate-submit{padding:9px 10px;font-size:12px}.kgate-status{font-size:10px;margin:4px 0 0}}
+.kgate-card{pointer-events:auto;width:min(620px,96vw);height:60vh;max-height:60vh;overflow:hidden;background:linear-gradient(145deg,#ffe76a 0%,#f5c928 52%,#dca900 100%);border:1px solid #c99a00;border-radius:20px;padding:22px;box-shadow:0 24px 80px rgba(4,43,82,.30)}
+.kgate-head{text-align:center;margin-bottom:7px}.kgate-head h2{font-size:clamp(23px,4vw,31px);margin:0 0 4px;color:#07509a}.kgate-head p{font-size:13px;margin:0;color:#526c83}
+.kgate-grid{display:grid;grid-template-columns:1fr;gap:5px}.kgate-field{display:flex;flex-direction:column;gap:5px}.kgate-field.full{grid-column:auto}.kgate-field label{font-size:12px;font-weight:800;color:#153b63}.kgate-field input,.kgate-field select{width:100%;padding:7px;border:1px solid #c8dce8;border-radius:9px;font:inherit;font-size:14px;background:#fff;color:#153b63}.kgate-consent{display:flex;gap:12px;align-items:flex-start;font-size:12px;color:#526c83;line-height:1.5}.kgate-field .kgate-consent input{width:24px;height:24px;min-width:24px;flex:0 0 24px;margin:1px 0 0;accent-color:#0875c9;cursor:pointer}.kgate-submit{width:100%;margin-top:5px}.kgate-status{font-size:12px;text-align:center;color:#07509a;margin:8px 0 0}.kgate-status:empty{display:none}
+body.kgate-locked{overflow:hidden!important;position:fixed!important;width:100%!important;left:0;right:0;touch-action:none}
+@media(max-width:520px){.kgate-card{height:60dvh;max-height:60dvh;padding:9px;border-radius:16px}.kgate-head{margin-bottom:7px}.kgate-head h2{font-size:22px}.kgate-head p{font-size:12px}.kgate-grid{grid-template-columns:1fr!important;gap:7px}.kgate-field,.kgate-field.full{grid-column:1/-1!important}.kgate-field label{font-size:11px}.kgate-field input,.kgate-field select{padding:5px 7px;font-size:12px}.kgate-consent{font-size:10px;gap:8px}.kgate-field .kgate-consent input{width:22px;height:22px;min-width:22px;flex-basis:22px}.kgate-submit{padding:9px 10px;font-size:12px}.kgate-status{font-size:10px;margin:4px 0 0}}
+
+
+/* Compact 60%-screen visitor form; keep the background visible while hiding selected details. */
+body:has(#kobutaGate:not([hidden])) .wa{display:none!important}
+body:has(#kobutaGate:not([hidden])) #contact .contact-line:first-of-type{filter:blur(7px);user-select:none}
+body:has(#kobutaGate:not([hidden])) #contact .contact-line:nth-of-type(2){filter:blur(7px);user-select:none}
+body:has(#kobutaGate:not([hidden])) #design .table-wrap{filter:blur(7px);user-select:none;pointer-events:none}
+body:has(#kobutaGate:not([hidden])) .section.soft .vision-grid{filter:blur(5px);user-select:none}
+@media(max-width:520px){
+ .kgate-grid{grid-template-columns:1fr!important}
+ .kgate-field,.kgate-field.full{grid-column:1/-1!important}
+ .kgate-card{padding:8px!important}
+ .kgate-head{margin-bottom:4px!important}
+ .kgate-head h2{font-size:19px!important;line-height:1.1}
+ .kgate-head .kicker{font-size:9px}
+ .kgate-head p{font-size:11px!important}
+ .kgate-grid{gap:5px!important}
+ .kgate-field{gap:2px!important}
+ .kgate-field label{font-size:10px!important;line-height:1.2}
+ .kgate-field input,.kgate-field select{padding:5px 7px!important;font-size:11px!important;min-height:30px}
+ .kgate-consent{font-size:9px!important;line-height:1.25!important;gap:6px!important}
+ .kgate-field .kgate-consent input{width:19px!important;height:19px!important;min-width:19px!important;flex-basis:19px!important}
+ .kgate-submit{padding:9px 8px!important;font-size:13px!important;font-weight:800!important;line-height:1.2!important;margin-top:0!important}
+ .kgate-status{font-size:9px!important;margin:2px 0 0!important;line-height:1.1}
+}
+
+
+/* Visitor form text enlarged to approximately 2x for readability */
+#kobutaGate .kgate-head h2{font-size:30.4px!important;line-height:1.12!important}
+#kobutaGate .kgate-head .kicker{font-size:14.4px!important}
+#kobutaGate .kgate-head p{font-size:17.6px!important;line-height:1.25!important}
+#kobutaGate .kgate-field label{font-size:16px!important;line-height:1.25!important}
+#kobutaGate .kgate-field input,#kobutaGate .kgate-field select{font-size:17.6px!important;min-height:42px!important;padding:8px!important}
+#kobutaGate .kgate-consent{font-size:14.4px!important;line-height:1.3!important}
+#kobutaGate .kgate-field .kgate-consent input{width:24px!important;height:24px!important;min-width:24px!important;flex-basis:24px!important}
+#kobutaGate .kgate-submit{font-size:20.8px!important;line-height:1.2!important;padding:12px 10px!important}
+#kobutaGate .kgate-status{font-size:14.4px!important;line-height:1.25!important}
+@media(max-width:520px){#kobutaGate .kgate-card{height:85dvh!important;max-height:85dvh!important;padding:10px!important}}
 
 </style>
 
@@ -83,9 +121,9 @@ body.kgate-locked{overflow-y:auto}
 <meta name="twitter:image" content="https://vishalnarwal2003.github.io/kobuta.github.io/kobuta-social-preview.jpg">
 
 </head>
-<body class="kgate-locked">
+<body>
 
-<div id="kobutaGate" role="dialog" aria-modal="true" aria-labelledby="kgateTitle">
+<div id="kobutaGate" role="dialog" aria-modal="true" aria-labelledby="kgateTitle" hidden>
   <div class="kgate-card">
     <div class="kgate-head">
       <div class="kicker">Kobuta Enviro Experts</div>
@@ -185,13 +223,23 @@ document.getElementById('enquiry').addEventListener('submit',function(e){e.preve
  const submit=document.getElementById('kgateSubmit');
  let waiting=false;
  let responseHandled=false;
+ let lockedScrollY=0;
  function unlockWebsite(){
    responseHandled=true; waiting=false; gate.hidden=true; document.body.classList.remove('kgate-locked');
-   try{sessionStorage.setItem('kobutaEnquirySubmitted','yes')}catch(e){}
+   document.body.style.top=''; window.scrollTo(0, lockedScrollY);
+   try{localStorage.setItem('kobutaEnquirySubmitted','yes')}catch(e){}
  }
  form.addEventListener('submit',function(){
    waiting=true; responseHandled=false; submit.disabled=true; submit.textContent='Submitting…';
    status.textContent='Submitting your enquiry. Please wait…';
+   // Apps Script saves the row, but its cross-origin iframe response may not
+   // be readable by the page. Avoid leaving the visitor stuck indefinitely.
+   setTimeout(function(){
+     if(waiting && !responseHandled){
+       status.textContent='Thank you! Opening website…';
+       unlockWebsite();
+     }
+   },3000);
  });
  // Apps Script may redirect its iframe response, so use iframe load as a fallback
  // if its postMessage response is blocked by the browser's cross-origin sandbox.
@@ -209,8 +257,53 @@ document.getElementById('enquiry').addEventListener('submit',function(e){e.preve
      status.textContent='Submission failed. Please check details and try again.';
    }
  });
- // Keep gate visible on fresh visits; only remember successful submission for this tab session.
- try{if(sessionStorage.getItem('kobutaEnquirySubmitted')==='yes'){gate.hidden=true;document.body.classList.remove('kgate-locked')}}catch(e){}
+ // Show the visitor form after two distinct scroll gestures. Once it opens,
+ // freeze background scrolling until the form is submitted successfully.
+ let alreadySubmitted=false;
+ try{alreadySubmitted=localStorage.getItem('kobutaEnquirySubmitted')==='yes'}catch(e){}
+ if(!alreadySubmitted){
+   gate.hidden=true;
+   document.body.classList.remove('kgate-locked');
+   let scrollGestures=0;
+   let wheelActive=false;
+   let wheelResetTimer=null;
+   let touchStartY=null;
+   function openGateAfterSecondScroll(){
+     if(gate.hidden===false) return;
+     lockedScrollY=window.scrollY||window.pageYOffset||0;
+     gate.hidden=false;
+     document.body.classList.add('kgate-locked');
+     document.body.style.top=(-lockedScrollY)+'px';
+   }
+   function countGesture(){
+     scrollGestures++;
+     if(scrollGestures>=2){
+       window.removeEventListener('wheel',onWheel);
+       window.removeEventListener('touchstart',onTouchStart);
+       window.removeEventListener('touchend',onTouchEnd);
+       openGateAfterSecondScroll();
+     }
+   }
+   function onWheel(e){
+     if(Math.abs(e.deltaY)<8) return;
+     if(!wheelActive){wheelActive=true;countGesture();}
+     clearTimeout(wheelResetTimer);
+     wheelResetTimer=setTimeout(function(){wheelActive=false;},500);
+   }
+   function onTouchStart(e){touchStartY=e.touches&&e.touches.length?e.touches[0].clientY:null;}
+   function onTouchEnd(e){
+     if(touchStartY===null) return;
+     const endY=e.changedTouches&&e.changedTouches.length?e.changedTouches[0].clientY:touchStartY;
+     if(Math.abs(endY-touchStartY)>18) countGesture();
+     touchStartY=null;
+   }
+   window.addEventListener('wheel',onWheel,{passive:true});
+   window.addEventListener('touchstart',onTouchStart,{passive:true});
+   window.addEventListener('touchend',onTouchEnd,{passive:true});
+ }else{
+   gate.hidden=true;
+   document.body.classList.remove('kgate-locked');
+ }
 })();
 
 </script>
