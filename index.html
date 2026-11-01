@@ -179,8 +179,8 @@ body:has(#kobutaGate:not([hidden])) .section.soft .vision-grid{filter:blur(3px);
   82% { transform: translateY(-1px); }
   100% { transform: translateY(0); }
 }
-#kobutaGate:not([hidden]) .kgate-card { animation: kgateUnroll 1500ms cubic-bezier(.35,.02,.25,1) both; transform-origin: 50% 0; }
-#kobutaGate:not([hidden]) .kgate-rope { animation: kgateRopeSettle 1500ms ease-out both; }
+#kobutaGate:not([hidden]) .kgate-card { animation: kgateUnroll 2000ms cubic-bezier(.35,.02,.25,1) both; transform-origin: 50% 0; }
+#kobutaGate:not([hidden]) .kgate-rope { animation: kgateRopeSettle 2000ms ease-out both; }
 @media (prefers-reduced-motion: reduce) {
   #kobutaGate:not([hidden]) .kgate-card, #kobutaGate:not([hidden]) .kgate-rope { animation: none!important; }
 }
@@ -197,9 +197,9 @@ html { scroll-behavior: smooth; }
   from { background-position: center, 48% 50%; }
   to   { background-position: center, 55% 50%; }
 }
-.hero-grid > div { animation: heroIntro .9s cubic-bezier(.2,.75,.25,1) both; }
+.hero-grid > div { animation: heroIntro 2s cubic-bezier(.2,.75,.25,1) both; }
 .hero-card {
-  animation: heroIntro 1s .18s cubic-bezier(.2,.75,.25,1) both, gentleFloat 6s 1.2s ease-in-out infinite;
+  animation: heroIntro 2s .18s cubic-bezier(.2,.75,.25,1) both, gentleFloat 6s 2.2s ease-in-out infinite;
 }
 @keyframes heroIntro {
   from { opacity: 0; transform: translateY(24px); }
@@ -246,7 +246,7 @@ html { scroll-behavior: smooth; }
 /* Scroll reveal is enabled only after JavaScript initializes, so content stays visible without JS. */
 .motion-ready .reveal {
   opacity:0; transform:translateY(26px);
-  transition:opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1);
+  transition:opacity 2s ease, transform 2s cubic-bezier(.2,.7,.2,1);
 }
 .motion-ready .reveal.is-visible { opacity:1; transform:translateY(0); }
 .motion-ready .reveal-left { transform:translateX(-26px); }
@@ -262,7 +262,7 @@ html { scroll-behavior: smooth; }
 }
 @media(max-width:680px) {
   .hero { background-size:auto, cover; animation-duration:32s; }
-  .hero-card { animation:heroIntro 1s .18s both; }
+  .hero-card { animation:heroIntro 2s .18s both; }
   .tile:hover,.feature:hover,.application:hover,.process-step:hover,.gallery-card:hover,.cost-card:hover,.quote:hover {
     transform:none;
   }
